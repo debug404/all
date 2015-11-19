@@ -1,0 +1,35 @@
+package com.w.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class RequestDemo1
+ */
+@WebServlet("/RequestDemo1")
+public class RequestDemo1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 3 从request对象中取出请求数据
+
+		// 3.1 请求行
+		System.out.println("请求的方式" + request.getMethod());// 请求方式
+		System.out.println("URI:" + request.getRequestURI());// 请求资源
+		System.out.println("URL:"+request.getRequestURL());//请求URL
+		System.out.println("URL:"+request.getProtocol());//Http的版本号
+		// 3.2 请求头
+
+		// 3.3 请求实体内容
+
+		// 3.4 请求行
+
+		// 3.5 请求行
+	}
+
+}

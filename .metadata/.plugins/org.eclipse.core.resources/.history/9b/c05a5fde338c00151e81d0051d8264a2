@@ -1,0 +1,34 @@
+package com.w.demo;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class getFiles {
+
+	public static void getFiles(File files) {
+
+		if (files.isDirectory()) {
+			File[] fis = files.listFiles();
+			for (int i = 0; i < fis.length; i++) {
+
+				// System.out.println(fis[i].getName());
+				// System.out.println(fis[i].lastModified());
+				// System.out.println(fis[i].length() + "kb");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd hh-mm-ss");
+				Date date = new Date(fis[i].lastModified());
+				System.out.println(sdf.format(date));
+				System.out.println((int)Math.ceil(fis[i].length()/1024.0));
+			}
+
+		} else {
+
+		}
+	}
+
+	public static void main(String[] args) {
+
+		getFiles(new File("E:\\java"));
+	}
+
+}

@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+img {
+	width: 30px;
+	height: 30px;
+}
+table{
+	width:800px;
+	height:400px;
+	margin-left:400px
+}
+a{
+	line-height:30px
+}

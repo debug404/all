@@ -1,0 +1,11 @@
+package com.w.pojo;
+
+import java.util.ArrayList;
+
+public class Files {
+	private String id;
+	private String text;
+	private String address;
+	
+
+}

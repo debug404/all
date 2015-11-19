@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form action="/HelloServlet/hello" method="post">
+		<lable>用户名：</lable>
+		<input type="text" name="username" /> <br /> <label>密码:</label><input
+			type="password" name="password" /> <input type="submit" />
+	</form>
+
+
+</body>
+</html>

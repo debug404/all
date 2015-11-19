@@ -1,0 +1,16 @@
+package com.w.demo;
+
+import java.io.File;
+
+public class getFiles {
+
+	public void getFiles() {
+		File files = new File("E:\\java");
+		System.out.println(files.getName());
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

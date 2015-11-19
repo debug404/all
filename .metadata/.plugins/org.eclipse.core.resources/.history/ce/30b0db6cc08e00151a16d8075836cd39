@@ -1,0 +1,85 @@
+package com.w.servlet;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.w.pojo.Files;
+
+import net.sf.json.JSONArray;
+
+/**
+ * Servlet implementation class getJson
+ */
+@WebServlet("/getJson.do")
+public class getJson extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	public int i = 0;
+	public ArrayList<Files> flist;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public getJson() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void getFile(File file, List<Files> lists) {
+
+		File[] files = file.listFiles();
+
+		for (File f : files) {
+			if (f.isDirectory()) {
+				Files fs2 = new Files();
+				fs2.setId("22");
+				fs2.setState("open");
+				fs2.setText(f.getName());
+				List<Files> fs22 = new ArrayList<Files>();
+				fs2.setChildren(fs22);
+				lists.add(fs2);
+				
+					getFile(f, fs22);
+				
+			} else {
+
+				Files fs1 = new Files();
+				fs1.setId("22");
+				fs1.setState("open");
+				fs1.setText(f.getName());
+				fs1.setChildren(null);
+				lists.add(fs1);
+			}
+
+		}
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		File file = new File("C:\\Program Files\\Java\\jdk1.7.0_80");
+		flist = new ArrayList<Files>();
+		getFile(file, flist);
+		JSONArray objArr = JSONArray.fromObject(flist);
+		response.getWriter().write(objArr.toString());
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

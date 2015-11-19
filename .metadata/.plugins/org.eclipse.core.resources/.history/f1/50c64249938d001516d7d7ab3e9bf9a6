@@ -1,0 +1,56 @@
+package com.w.dao;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.w.pojo.AllFile;
+import com.w.pojo.Files;
+
+import net.sf.json.JSONArray;
+
+/**
+ * Servlet implementation class getJsons
+ */
+@WebServlet("/getJsons.do")
+public class getJsons extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public getJsons() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		ArrayList<AllFile> allFiles = new ArrayList<AllFile>();
+		ArrayList<Files> files = new ArrayList<Files>();
+		files.add(new Files("2", "eee", "3333"));
+		files.add(new Files("2", "eee2", "3333"));
+		files.add(new Files("2", "eee3", "3333"));
+		files.add(new Files("2", "eee4", "3333"));
+		AllFile aFile = new AllFile("0", "根目录", files);
+
+		JSONArray objArr = JSONArray.fromObject(files);
+		response.getWriter().write(objArr.toString());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+
+}

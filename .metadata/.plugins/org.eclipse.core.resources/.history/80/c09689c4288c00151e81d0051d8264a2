@@ -1,0 +1,30 @@
+package com.w.demo;
+
+import java.io.File;
+
+public class getFiles {
+
+	public static void getFiles(File files) {
+	
+		if (files.isDirectory()) {
+			File[] fis = files.listFiles();
+			for (int i = 0; i < fis.length; i++) {
+				
+//				System.out.println(fis[i].getName());
+//				System.out.println(fis[i].lastModified());
+//				System.out.println(fis[i].length() + "kb");
+			}
+
+		}
+		else
+		{
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		
+		getFiles(new File("E:\\java"));
+	}
+
+}

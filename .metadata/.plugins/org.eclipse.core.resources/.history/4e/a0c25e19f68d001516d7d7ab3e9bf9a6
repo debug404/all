@@ -1,0 +1,10 @@
+<%@page import="java.io.File"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%
+	String f = request.getParameter("path");
+	String name = request.getParameter("name");
+	File fie = new File(f + "\\" + name);
+	fie.mkdirs();
+%>

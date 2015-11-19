@@ -1,0 +1,10 @@
+package com.w.pojo;
+
+import java.util.ArrayList;
+
+public class Files {
+	private String text;
+	private String address;
+	private ArrayList<Files> childs;
+
+}

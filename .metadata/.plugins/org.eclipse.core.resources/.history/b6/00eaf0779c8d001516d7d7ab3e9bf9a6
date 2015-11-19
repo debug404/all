@@ -1,0 +1,16 @@
+.dright{
+	
+}
+.contain{
+	margin-top: 80px;
+}
+.tree{
+	height:300px
+}
+.text{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.back{
+	margin-left: 10px;
+}

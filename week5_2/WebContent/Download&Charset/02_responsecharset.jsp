@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		//设置文本的写入编码
+		//response.setCharacterEncoding("utf-8");
+		//转换url代码
+		//new String("a".getBytes("ISO-8859-1"), "UTF-8");
+		//重定向  不传递上一页面的值
+		//response.sendRedirect("01_response.jsp");
+		//请求分发  传递上一页面的值 
+		//request.getRequestDispatcher("01_response.jsp").forward(request, response);
+		//获取服务器端的文件
+		//request.getContextPath()/xxx.jsp
+	%>
+
+</body>
+
+</html>

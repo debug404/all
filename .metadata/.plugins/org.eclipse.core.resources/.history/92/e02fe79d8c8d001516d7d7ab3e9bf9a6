@@ -1,0 +1,7 @@
+package com.w.pojo;
+
+public class Files {
+	private String text;
+	private String address;
+	private Files child;
+}

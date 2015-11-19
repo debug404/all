@@ -1,0 +1,122 @@
+$(function() {
+	var strThis;
+	$(".text").hide();
+	var srcs = [];
+	var src;
+
+	var begin = $(".tabs").attr("address");
+	$(window).load(function() {
+		getAjax(begin);
+
+	});
+
+	$('#tt').tree({
+		method : 'get',
+		url : 'getJsons.do',
+		onSelect : function(node) {
+
+			var a = node.address;
+			var str = a.replace(/\\/g, "\\\\");
+			strThis = str;
+			getAjax(str);
+
+		},
+		onLoadSuccess : function(node, data) {
+			$('.tree-title').css({
+				'font-size' : '20px'
+			});
+			$('.tree-node').css({
+				'height' : '25px'
+			});
+			$('.tree-file').css({
+				'background' : 'url("img/load.png") no-repeat'
+			});
+		}
+	});
+
+	$("tbody").delegate(".open", "click", function() {
+		$(".text").show();
+
+		var a = $(this).prop("id");
+		var str = a.replace(/\\/g, "\\\\");
+		strThis = str;
+
+		src = $(".open").eq(1).attr("tag");
+		srcs[srcs.length] = src;
+
+		getAjax(str);
+		var len = srcs.length;
+		alert(len);
+		alert(srcs[len - 1].substring(4, srcs[len - 1].length));
+		$(".thisLoc").html(srcs[len - 1].substring(4, srcs[len - 1].length));
+
+	});
+
+	$(".back").click(
+			function() {
+
+				var len = srcs.length;
+
+				getAjax(srcs[len - 1]);
+				srcs.length = len - 1;
+				$(".thisLoc").html("");
+				$(".thisLoc").append(
+						"<a href='javascript:void(0)'>"
+								+ srcs[len - 2].substring(4,
+										srcs[len - 2].length) + "</a>");
+
+			});
+
+	$(".backIndex").click(function() {
+		srcs.length = 0;
+		$(".thisLoc").html("");
+		getAjax(begin);
+
+	});
+
+	function getAjax(str) {
+
+		$.ajax({
+			url : "getFiles.jsp?path=" + str,
+			cache : false,
+			success : function(html) {
+				if (html.trim() == "download") {
+					window.location = "download.jsp?path=" + str;
+				} else {
+
+					$(".tabs").children().remove();
+					$(".tabs").append(html);
+				}
+			}
+		});
+
+	}
+
+	$(".create").click(function() {
+
+		$("#wids").modal({
+			remote : "modal.jsp"
+		});
+
+	});
+	$(".modal-content").delegate("#btn2", "click", function() {
+		$('#wids').modal('hide');
+	});
+	$(".modal-content").delegate("#btn1", "click", function() {
+		var name = $("#myTextarea").val().trim();
+		if ($(".open").length != 0) {
+			strThis = $(".open").eq(1).attr("tag");
+		}
+
+		$.ajax({
+			url : "create.jsp?path=" + strThis + "&name=" + name,
+			cache : false,
+			success : function(html) {
+				$('#wids').modal('hide');
+			}
+		});
+		getAjax(strThis);
+
+	});
+
+});

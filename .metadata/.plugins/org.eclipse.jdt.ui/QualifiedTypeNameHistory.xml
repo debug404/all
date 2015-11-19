@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Enumeration"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="com.w.text.GetJSONArray"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.w.text.CodeLanguage"/>
+<fullyQualifiedTypeName name="net.sf.json.JSONArray"/>
+<fullyQualifiedTypeName name="net.sf.json.JSONObject"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.w.pojo.AllFile"/>
+<fullyQualifiedTypeName name="com.w.pojo.Files"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.dbcp.pool.impl.GenericKeyedObjectPool.Config"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.bind.CycleRecoverable.Context"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+</qualifiedTypeNameHistroy>

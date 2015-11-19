@@ -1,0 +1,52 @@
+package com.w.pojo;
+
+import java.util.ArrayList;
+
+public class Files {
+	private String text;
+	private String address;
+
+	private ArrayList<Files> childs;
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Files getChild() {
+		return child;
+	}
+
+	public void setChild(Files child) {
+		this.child = child;
+	}
+
+	public Files(String text, String address, Files child) {
+		super();
+		this.text = text;
+		this.address = address;
+		this.child = child;
+	}
+
+	public Files() {
+		super();
+	}
+
+	public Files(String text, String address) {
+		super();
+		this.text = text;
+		this.address = address;
+	}
+
+}

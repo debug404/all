@@ -1,0 +1,53 @@
+package com.w.dao;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.w.pojo.Files;
+
+import net.sf.json.JSONArray;
+
+/**
+ * Servlet implementation class getJsons
+ */
+@WebServlet("/getJsons.do")
+public class getJsons extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public getJsons() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ArrayList<Files> files1 = new ArrayList<Files>();
+		ArrayList<Files> files = new ArrayList<Files>();
+		files.add(new Files("1123", "12313"));
+		files.add(new Files("1123", "12313"));
+		Files fie1 = new Files("我的程序", "D/:", files);
+		files1.add(fie1);
+
+		JSONArray objArr = JSONArray.fromObject(files1);
+		response.getWriter().write(objArr.toString());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+
+}

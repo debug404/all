@@ -1,0 +1,33 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.w.pojo.Student"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		Student stu1 = new Student("张飞", "28", "男");
+		pageContext.setAttribute("stu1", stu1);
+	%>
+	${stu1.name}
+	<%
+		String name = ((Student) pageContext.findAttribute("stu1")).getName();
+		out.print(name);
+	%>
+	<%
+		ArrayList<Student> stus = new ArrayList<Student>();
+		Student stu2 = new Student("张飞1", "281", "男");
+		Student stu3 = new Student("张飞2", "282", "男");
+		Student stu4 = new Student("张飞3", "283", "男");
+		stus.add(stu2);
+		stus.add(stu3);
+		stus.add(stu4);
+		pageContext.setAttribute("list", stus);
+	%>
+	${list}
+</body>
+</html>

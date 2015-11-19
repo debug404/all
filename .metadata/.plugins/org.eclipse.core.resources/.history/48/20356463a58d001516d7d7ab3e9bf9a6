@@ -1,0 +1,25 @@
+.dright{
+	
+}
+.contain{
+	margin-top: 80px;
+}
+.tree{
+	height:800px
+}
+.tree1{
+	height:480px;
+	frameborder:0px
+	scrolling:no;
+}
+.text{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.back{
+	margin-left: 10px;
+}
+.thisLoc{
+	margin-left: 10px;
+	font-size:10px;
+}

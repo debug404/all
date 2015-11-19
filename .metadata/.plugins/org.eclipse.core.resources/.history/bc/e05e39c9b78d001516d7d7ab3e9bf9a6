@@ -1,0 +1,67 @@
+package com.w.dao;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.w.pojo.AllFile;
+import com.w.pojo.Files;
+
+import net.sf.json.JSONArray;
+
+/**
+ * Servlet implementation class getJsons
+ */
+@WebServlet("/getJsons.do")
+public class getJsons extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public getJsons() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		ArrayList<AllFile> allFiles = new ArrayList<AllFile>();
+		ArrayList<Files> files = new ArrayList<Files>();
+
+		AllFile aFile = new AllFile("0", "Android", files);
+
+		
+		int id = 1;
+		File fie = new File("D:\\");
+		File[] fies = fie.listFiles();
+		for (File f : fies) {
+			if (f.isDirectory()) {
+				String sid = String.valueOf(id);
+				files.add(new Files(sid, f.getName(), f.getAbsolutePath()));
+				id++;
+			}
+		}
+		
+		JSONArray objArr = JSONArray.fromObject(aFile);
+		response.getWriter().write(objArr.toString());
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+
+}

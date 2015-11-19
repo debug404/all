@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+img {
+	width: 30px;
+	height: 30px;	
+}
+table{
+	width:800px;
+	height:400px;
+	margin-left:350px;
+	border-collapse: collapse;	
+}
+table tr{
+	border-top:1px solid #DCDCDC;
+	
+}
+a{
+	text-decoration: none;
+	
+}
+td,th{
+	line-height:60px
+}
+th{
+	text-align:left;
+}
+.first{
+	background-color: #696969;
+}

@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+img {
+	width: 30px;
+	height: 30px;	
+}
+table{
+	width:800px;
+	height:400px;
+	margin-left:400px;	
+}
+table>tr{
+	border-top:1px solid;
+}
+a{
+	text-decoration: none;
+	valign:center;
+}
