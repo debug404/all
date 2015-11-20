@@ -65,7 +65,7 @@ public class getJson extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				fs1.setChildren(null);
+//				fs1.setChildren(null);
 				lists.add(fs1);
 			}
 

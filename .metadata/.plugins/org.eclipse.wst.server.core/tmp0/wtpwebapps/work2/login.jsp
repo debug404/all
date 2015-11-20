@@ -30,11 +30,21 @@
       <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 </head>
 
 <body>
-
+	<%
+		String vlu="";
+		Cookie[] cookie = request.getCookies();
+		if (cookie != null) {
+			for (Cookie c : cookie) {
+				if (c.getName().equals("username")) {
+					vlu = c.getValue();
+				}
+			}
+		}
+	%>
 	<div class="container">
 
 		<div class="navbar navbar-default  navbar-fixed-top">
@@ -97,8 +107,8 @@
 								<div class="input-group">
 									<span class="input-group-addon " id="basic-addon1"><span
 										class="glyphicon glyphicon-user"> </span></span> <input id="username"
-										name="username" type="text" class="form-control"
-										placeholder="用户名" />
+										name="username" type="text" value="<%=vlu%>"
+										class="form-control" placeholder="用户名" />
 								</div>
 							</div>
 							<div class="form-group">

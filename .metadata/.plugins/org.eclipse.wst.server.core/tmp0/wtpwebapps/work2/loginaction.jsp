@@ -10,7 +10,13 @@
 	<%
 		response.setCharacterEncoding("utf-8");
 		String username = request.getParameter("username");
+
+		Cookie cookie = new Cookie("username", username);
+		cookie.setPath("/");
+		cookie.setMaxAge(10000);
+		response.addCookie(cookie);
 		
+
 		session.setAttribute("username", username);
 		response.sendRedirect("index.jsp");
 	%>
