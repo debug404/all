@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<%--set保存数据到域中, 默认是page域 --%>
+	<c:set var="name" value="hello" scope="request"></c:set>
+	${requestScope.name}
+	
+	<%-- 
+	default:当value值为null时,使用默认值
+	escapeXml:是否对value值进行转义,false不转义,true转义
+	
+	 --%>	
+	<c:out value="${requestScope.name}" default="123"></c:out>
+	
+	
+	<%-- --%>
+	<c:if test="${10>5 }">
+	条件成立
+	</c:if>
+	
+	<%-- 
+	<c:if test=""></c:if>
+	<c:choose></c:choose>
+	<c:when test=""></c:when>
+	<c:otherwise></c:otherwise>
+	<c:forEach></c:forEach>
+	<c:forTokens items="" delims=""></c:forTokens>
+	<c:redirect></c:redirect> --%>
+
+
+
+
+</body>
+</html>

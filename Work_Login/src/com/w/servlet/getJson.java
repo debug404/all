@@ -36,7 +36,9 @@ public class getJson extends HttpServlet {
 	public void getFile(File file, List<Files> lists) {
 
 		File[] files = file.listFiles();
-
+		if(files==null||files.length==0){
+			return;
+		}
 		for (File f : files) {
 			if (f.isDirectory()) {
 				Files fs2 = new Files();
@@ -75,7 +77,8 @@ public class getJson extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		File file = new File("F:\\Work");
+		String path=this.getServletContext().getInitParameter("path");
+		File file = new File(path);
 		flist = new ArrayList<Files>();
 		getFile(file, flist);
 		Files fis = new Files("1", new String("我的资源管理器".getBytes("utf-8"), "ISO8859-1"), "close", flist);

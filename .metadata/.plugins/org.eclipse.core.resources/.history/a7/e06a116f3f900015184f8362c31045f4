@@ -1,0 +1,65 @@
+package top.standards.web.servlet;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileJsonObj {
+	
+	public String text;
+	
+	public List<FileJsonObj> children;
+	
+	public FileJsonObj() {
+		super();
+	}
+
+	public FileJsonObj(String text) {
+		super();
+		this.text = text;
+	}
+
+	public FileJsonObj(String text, List<FileJsonObj> children) {
+		super();
+		this.text = text;
+		this.children = children;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public List<FileJsonObj> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<FileJsonObj> children) {
+		this.children = children;
+	}
+	
+	public void setChildren(File file) {
+		if(file.isDirectory()){
+			File[] files = file.listFiles();
+			if(files==null||files.length==0){
+				return;
+			}
+			this.children = new ArrayList<FileJsonObj>();
+			for (File f : files) {
+				FileJsonObj fi = new FileJsonObj(f.getName());
+				if(f.isDirectory()){
+					fi.setChildren(f);
+				}
+				this.children.add(fi);
+			}
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "FileJsonObj [text=" + text + ", children=" + children + "]";
+	}
+}

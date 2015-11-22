@@ -17,4 +17,6 @@
 <fullyQualifiedTypeName name="org.apache.tomcat.dbcp.pool.impl.GenericKeyedObjectPool.Config"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.CycleRecoverable.Context"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="top.standards.web.servlet.FileJsonObj"/>
+<fullyQualifiedTypeName name="top.standards.web.servlet.FileTreeServlet"/>
 </qualifiedTypeNameHistroy>

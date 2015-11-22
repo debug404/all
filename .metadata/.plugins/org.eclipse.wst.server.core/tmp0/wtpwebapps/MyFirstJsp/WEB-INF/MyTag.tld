@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+     <description>JSTL 1.1 core library</description>
+  <display-name>JSTL core</display-name>
+  <tlib-version>1.1</tlib-version>
+  <!--标签库前缀  -->
+  <short-name>show</short-name>
+  <!--tld文件唯标识  -->
+  <uri>http://com.w.tag</uri>
+  	<!-- 标签的声明 -->
+   <tag>
+    <description>
+	Simple conditional tag that establishes a context for
+	mutually exclusive conditional operations, marked by
+	&lt;when&gt; and &lt;otherwise&gt;
+    </description>
+    <!--标签名  -->
+    <name>showIp</name>
+    <tag-class>com.w.tag.ShowIpTag</tag-class>
+    <!--输出格式  -->
+    <body-content>scriptless</body-content>
+  </tag>
+  </taglib>

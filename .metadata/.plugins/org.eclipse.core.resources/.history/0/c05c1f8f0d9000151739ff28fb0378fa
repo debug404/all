@@ -1,0 +1,98 @@
+package top.standards.web.servlet;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import top.standards.domain.User;
+import top.standards.util.DBUtil;
+import cn.itcast.commons.CommonUtils;
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+
+		response.setContentType("text/html;charset=utf-8");
+		
+		User loginUser = CommonUtils.toBean(request.getParameterMap(),User.class);
+
+		Map<String, String> errors = new HashMap<String, String>();
+
+		String username = loginUser.getUsername();
+		
+		if (username == null || username.isEmpty()) {
+			errors.put("username", "用户名不能为空");
+		}
+		String password = loginUser.getPassword();
+		if (password == null || password.isEmpty()) {
+			errors.put("password", "密码不能为空");
+		}
+		 
+		if (errors != null && errors.size() > 0) {
+			// 回显
+			request.setAttribute("error", errors);
+			request.setAttribute("user", loginUser);
+			request.getRequestDispatcher("/hw-servlet/Login.jsp").forward(
+					request, response);
+			return;
+		}
+		if (login(loginUser)) {
+			
+			response.sendRedirect("/hw-servlet/mainPage.jsp");
+			
+		}else{
+			System.out.println("error");
+			
+			response.getWriter().write("<script type='text/javascript'>alert('你输入的有误')</script>");
+			
+		}
+
+	}
+
+	private boolean login(User user) {
+		ResultSet rs = new DBUtil().query("SELECT * FROM users WHERE username=?",user.getUsername());
+		try {
+			while (rs.next()) {
+
+				String pswd =  rs.getString("password");
+				if (pswd.equals(user.getPassword())) {
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			
+			return false;
+		}
+		return false;
+	}
+
+}

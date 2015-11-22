@@ -1,0 +1,123 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.w.entity.Employee"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+.red {
+	color: red;
+}
+
+td {
+	border: 1px solid;
+}
+</style>
+<body>
+
+
+
+	<table>
+		<tr>
+			<th>编号</th>
+			<th>姓名</th>
+			<th>职位</th>
+			<th>性别</th>
+			<th>工资</th>
+			<th>入职时间</th>
+
+		</tr>
+		<c:forEach items="${emp}" var="e" varStatus="varStr">
+
+
+			<tr>
+				<td>${e.id}</td>
+				<td>${e.name}</td>
+
+				<c:choose>
+					<c:when test="${fn:contains(e.position,'经理')}">
+						<td class="red">${e.position}</td>
+					</c:when>
+					<c:otherwise>
+						<td>${e.position}</td>
+					</c:otherwise>
+				</c:choose>
+
+
+				<td><select>
+						<c:choose>
+							<c:when test="${fn:contains(e.sex,'男')}">
+								<option selected="selected" value="male">男</option>
+								<option value="female">女</option>
+							</c:when>
+							<c:otherwise>
+								<option value="male">男</option>
+								<option selected="selected" value="female">女</option>
+							</c:otherwise>
+						</c:choose>
+
+
+				</select></td>
+
+
+
+				<td>
+				<c:set var="salarys" value=""></c:set>
+				<c:forEach begin="3" end="${fn:length(e.salary)}" step="3"  varStatus="varStr">
+					<c:set var="salarys" value="${salarys }${fn:substring(e.salary,varStr.index-3,varStr.index)} "></c:set>
+				</c:forEach>
+				${fn:length(salarys) }
+				${fn:substring(e.salary,fn:length(salarys),fn:length(e.salary))}
+				</td>
+				
+				
+
+				<c:set var="name" value=""></c:set>
+				<td><c:forTokens items="${e.date }" delims="-" var='s'>
+
+						<c:choose>
+							<c:when test="${fn:length(s)==4}">
+								<c:set var="name" value="${name}${fn:substring(s, 2,4)}"></c:set>
+							</c:when>
+							<c:when test="${fn:length(s)==1}">
+								<c:set var="name" value="${name}-0${s}"></c:set>
+							</c:when>
+							<c:when test="${fn:length(s)==2}">
+								<c:set var="name" value="${name}-${s}"></c:set>
+							</c:when>
+						</c:choose>
+						</c:forTokens> ${name}</td>
+
+			</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</c:forEach>
+
+
+
+
+	</table>
+</body>
+</html>
